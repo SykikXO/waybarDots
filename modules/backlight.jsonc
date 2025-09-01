@@ -1,0 +1,9 @@
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon} {percent}%",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "on-scroll-up": "brillo -A 1",
+        "on-scroll-down": "brillo -U 1",
+        "min-length": 6
+    },
+

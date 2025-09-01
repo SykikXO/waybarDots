@@ -1,0 +1,151 @@
+{
+    "layer": "top",
+    "position": "top", 
+    "height": 28,
+    "reload_style_on_change": true,
+    "modules-center":[
+	"hyprland/workspaces"
+    ],
+
+    "modules-left":[
+	"custom/notification",
+	"clock",
+	"group/hardware"
+    ],
+
+    "modules-right":[
+	"tray",
+	"network",
+	"pulseaudio",
+	"backlight",
+	"idle_inhibitor",
+	"battery"
+
+    ],
+
+    "clock": {
+	"format": "{:%I:%M %p}",
+	"format-alt": "{:%A, %B %d, %Y (%R)}",
+	"tooltip-format": "<tt><span face='InputMonoCondensed Nerd Font Medium' size='small'>{calendar}</span></tt>",
+	"calendar": {
+	    "mode"          : "year",
+	    "mode-mon-col"  : 3,
+	    "weeks-pos"     : "right",
+	    "on-scroll"     : 1,
+	    "format": {
+		"months":     "<span color='#ffead3'><b>{}</b></span>",
+		"days":       "<span color='#ecc6d9'><b>{}</b></span>",
+		"weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+		"weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+		"today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+	    }
+	},
+	"actions":  {
+	    "on-click-right": "mode",
+	    "on-scroll-up": "tz_up",
+	    "on-scroll-down": "tz_down",
+	    "on-scroll-up": "shift_up",
+	    "on-scroll-down": "shift_down"
+	}
+    },
+    "custom/notification": {
+	"tooltip": false,
+	"format": " ",
+	"on-click": "swaync-client -t -sw",
+	"escape": true
+    },
+
+    "hyprland/workspaces": {
+	"format": "{icon}",
+	"format-icons": {
+	    "active": " ",
+	    "default": " ",
+	    "empty": " "
+	},
+	"persistent-workspaces": {
+	    "*": [ 1,2,3,4,5 ]
+	}
+    },
+
+
+
+    "cpu":{
+	"format": "&#62171; {usage}%",
+	"tooltip": false
+    },
+    "memory":{
+	"format": " {}%"
+    },
+
+    "temperature":{
+	"format": "{icon}{temperatureC}°C",
+	"format-icons": ["🌡 ", "🌡 ", "🌡 "],
+	"critical-threshold": 60,
+	"hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input"
+    },
+    "group/hardware":{
+	"orientation":"horizontal",
+	"modules":[
+	    "cpu",
+	    "memory",
+	    "temperature"
+	]
+    },
+
+
+    "network":{
+	"format": "({signalStrength}%  ) {essid}",
+	"format-disconnected": "⚠ Disconnected",
+	"format-linked": "{ifname} (No IP)  ",
+	"format-ethernet": "{ipaddr}/{cidr}  ",
+	"tooltip": false,
+	"format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "pulseaudio": {
+	"scroll-step": 1,
+	"format": "{volume}% {icon}  {format_source}",
+	"format-bluetooth": "{volume}% {icon}  {format_source}",
+	"format-bluetooth-muted": " {icon}  {format_source}",
+	"format-muted": "  {format_source}",
+	"format-source": "{volume}%  ",
+	"format-source-muted": " ",
+	"format-icons": {
+	    "headphone": " ",
+	    "hands-free": " ",
+	    "headset": " ",
+	    "phone": " ",
+	    "portable": " ",
+	    "car": " ",
+	    "default": ["", " ", " "]
+	},
+	"on-click": "pwvucontrol"
+    },
+    "backlight":{
+	"format":"{icon} {percent}%",
+	"format-icons": [" ", " ", " ", " ", " ", " ", " ", " ", " "],
+  "on-scroll-up": "brillo -A 1",
+  "on-scroll-down": "brillo -U 1",
+  "min-length": 4,
+	"on-click": "exec /home/sykik/.config/scripts/hyprsunset_toggle.sh"
+    },
+    "idle_inhibitor":{
+	"format": "{icon}",
+	"format-icons": {
+	    "activated": "",
+	    "deactivated": ""
+	}
+    },
+    "battery":{ 
+	"states": {
+	    "good": 95,
+	    "warning": 30,
+	    "critical": 15
+	},
+	"format": "{capacity}% {icon}",
+	"format-full": "{capacity}% {icon}",
+	"format-charging": "{capacity}% ",
+	"format-plugged": "{capacity}%  ",
+	"format-alt": "{time} {icon}",
+	"format-icons": [" ", " ", " ", " ", " "]
+    }
+}
