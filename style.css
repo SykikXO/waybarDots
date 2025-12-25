@@ -4,7 +4,7 @@
 @define-color red rgba(220, 20, 60, 0.5);
 
 * {
-  font-family: "Symbols Nerd Font", "InputMonoCondensed Nerd Font Medium";
+  font-family: "Input Mono Condensed";
   font-size: 16px;
   color: @text ;
   border-radius: 4px;
@@ -13,8 +13,8 @@
 
 
 window#waybar {
-  background-color: alpha(@background, 0.2);
-  color: white;
+  background-color: alpha(@background, 0.0);
+  color: @text;
   transition-property: background-color;
   transition-duration: .5s;
 }
@@ -30,11 +30,7 @@ window#waybar.empty {
 
 .modules-left,
 .modules-right,
-.modules-center {
-  padding: 0px 0px;
-  background: alpha(@color11, 0.4);
-  box-shadow: 0px 0px 2px alpha(@background, 0.1);
-}
+.modules-center {}
 
 .modules-right,
 .modules-left {
@@ -47,8 +43,6 @@ window#waybar.empty {
   background: transparent;
 }
 
-
-
 #custom-notification {
   margin: 0px 5px 0px 10px;
   padding: 0px 5px 0px 9px;
@@ -56,15 +50,12 @@ window#waybar.empty {
   background: alpha(@color7, 0.5);
 }
 
-
-
 #clock {
   background: alpha(@color6, 0.4);
   padding: 0px 10px;
   margin: 0px 5px;
   border-bottom: 1px solid alpha(@color7, 1);
 }
-
 
 #battery {
   padding: 0px 10px;
@@ -98,7 +89,7 @@ window#waybar.empty {
 #workspaces button {
   border-radius: 8px;
   background: alpha(@color2, 0.2);
-  padding: 0px 4px 0px 8px;
+  padding: 0px 7px 0px 9px;
   margin: 0px 2px;
   opacity: 0.9;
 }
@@ -157,6 +148,15 @@ window#waybar.empty {
   border-bottom: 1px dashed alpha(@color7, 1);
   background: alpha(@color5, 0.3);
 }
+
+
+#image.eyecare {
+  background-color: alpha(@color5, 0.8);
+  padding: 6px;
+  border-radius: 15%;
+  margin: 0 3px;
+}
+
 
 #pulseaudio.muted {
   border-bottom: 2px solid red;
