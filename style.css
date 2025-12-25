@@ -51,17 +51,17 @@ window#waybar.empty {
 }
 
 #clock {
-  background: alpha(@color6, 0.4);
+  background: alpha(@color9, 0.8);
   padding: 0px 10px;
   margin: 0px 5px;
-  border-bottom: 1px solid alpha(@color7, 1);
+  border-bottom: 1px solid alpha(@color6, 1);
 }
 
 #battery {
   padding: 0px 10px;
   margin: 0px 10px 0px 5px;
-  border-bottom: 1px solid alpha(@color7, 1);
-  background-color: alpha(@color4, 0.4);
+  border-bottom: 1px solid alpha(@color6, 1);
+  background-color: alpha(@color9, 1);
 }
 
 #battery.charging,
@@ -130,13 +130,13 @@ window#waybar.empty {
   border-radius: 5px;
   margin: 0 5px;
   border-bottom: 1px dotted alpha(@color7, 1);
-  background: alpha(@color2, 0.2);
+  background: alpha(@color2, 0.7);
 }
 
 #network {
   padding: 0px 10px;
   margin: 0px 5px;
-  background: alpha(@color2, 0.3);
+  background: alpha(@color2, 0.7);
   border-bottom: 1px dashed alpha(@color7, 1);
 }
 
@@ -145,8 +145,8 @@ window#waybar.empty {
 #idle_inhibitor {
   padding: 0px 10px;
   margin: 0px 5px;
-  border-bottom: 1px dashed alpha(@color7, 1);
-  background: alpha(@color5, 0.3);
+  border-bottom: 1px dashed alpha(@color10, 1);
+  background: alpha(@color2, 0.7);
 }
 
 
