@@ -19,13 +19,6 @@
     "idle_inhibitor",
     "battery"
   ],
-  "image#eyecare": {
-    "path": "/home/sykik/.config/waybar/eyecare-white.png",
-    "size": 20,
-    "tooltip-format": "Eyecare Mode",
-    "expand": true,
-    "on-click": "exec /home/sykik/.config/scripts/hyprsunset_toggle.sh"
-  },
   "clock": {
     "format": "{:%I:%M %p}",
     "format-alt": "{:%A, %B %d, %Y (%R)}",
@@ -101,7 +94,6 @@
   "group/screen": {
     "orientation": "horizontal",
     "modules": [
-      "image#eyecare",
       "backlight"
     ]
   },
@@ -152,7 +144,8 @@
     "on-scroll-up": "brillo -A 1",
     "tooltip": false,
     "on-scroll-down": "brillo -U 1",
-    "min-length": 4
+    "min-length": 4,
+    "on-click": "exec /home/sykik/.config/scripts/hyprsunset_toggle.sh"
   },
   "idle_inhibitor": {
     "format": "{icon}",
