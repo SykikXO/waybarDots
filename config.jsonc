@@ -67,21 +67,30 @@
     }
   },
   "cpu": {
-    "format": "<span font_family='Material Symbols Outlined' fallback='false' size='large' rise='-3840'>&#xe30d;</span> {usage}%",
-    "tooltip": false
+    "format": "<span font_family='Material Symbols Outlined' fallback='false' size='large' rise='-3840'>&#xe30d;</span>",
+    "states": {
+      "warning": 50,
+      "critical": 80
+    },
+    "tooltip-format": "CPU {usage}%"
   },
   "memory": {
-    "format": "<span font_family='Material Symbols Outlined' fallback='false' size='large' rise='-3840'>&#xe322;</span> {}%"
+    "format": "<span font_family='Material Symbols Outlined' fallback='false' size='large' rise='-3840'>&#xe322;</span>",
+    "states": {
+      "warning": 50,
+      "critical": 80
+    },
+    "tooltip-format": "Memory {}%"
   },
   "temperature": {
-    "format": "<span font_family='Material Symbols Outlined' fallback='false' size='large' rise='-3840'>{icon}</span> {temperatureC}°C",
+    "format": "<span font_family='Material Symbols Outlined' fallback='false' size='large' rise='-3840'>{icon}</span>",
     "format-icons": [
       "&#xe1ff;",
       "&#xe1ff;",
       "&#xe1ff;"
     ],
     "critical-threshold": 60,
-    "tooltip": false,
+    "tooltip-format": "Temp {temperatureC}°C",
     "hwmon-path": "/sys/class/hwmon/hwmon6/temp1_input"
   },
   "group/hardware": {

@@ -32,7 +32,8 @@ tooltip {
 tooltip label {
   color: @foreground;
   font-family: "Iosevka Nerd Font Mono";
-  font-size: 14px;
+  font-size: 16px;
+  padding: 4px 6px;
 }
 
 .modules-left { margin: 0 0 0 4px; }
@@ -90,6 +91,7 @@ tooltip label {
   font-family: "Material Symbols Outlined";
   font-size: 19px;
   min-width: 28px;
+  transition: background 0.2s ease;
 }
 
 #clock {
@@ -107,6 +109,11 @@ tooltip label {
   padding: 0 2px;
   background: @module-bg;
   border-radius: 2px;
+  transition: background 0.2s ease;
+}
+
+#hardware:hover {
+  background: alpha(#000000, 0.65);
 }
 
 #hardware #cpu,
@@ -114,15 +121,32 @@ tooltip label {
 #hardware #temperature {
   padding: 0 7px;
   background: transparent;
-  font-size: 15px;
+  transition: all 0.2s ease;
+  border-radius: 2px;
 }
 
-#hardware #cpu { color: @foreground; }
-#hardware #memory { color: @foreground; }
-#hardware #temperature { color: @foreground; }
+#hardware #cpu { color: #ffffff; }
+#hardware #cpu.warning { color: alpha(#ffffff, 0.4); }
+#hardware #cpu.critical { color: @color1; }
 
-#temperature.critical, #hardware #temperature.critical {
-  color: @red;
+#hardware #memory { color: #ffffff; }
+#hardware #memory.warning { color: alpha(#ffffff, 0.4); }
+#hardware #memory.critical { color: @color1; }
+
+#hardware #temperature { color: #ffffff; }
+#hardware #temperature.critical { color: @color1; }
+
+#hardware #cpu:hover,
+#hardware #cpu.warning:hover,
+#hardware #cpu.critical:hover,
+#hardware #memory:hover,
+#hardware #memory.warning:hover,
+#hardware #memory.critical:hover,
+#hardware #temperature:hover,
+#hardware #temperature.critical:hover {
+  color: #ffffff;
+  background: transparent;
+  text-shadow: 0 0 12px #ffffff, 0 0 24px alpha(#ffffff, 0.5);
 }
 
 #network {
@@ -132,6 +156,7 @@ tooltip label {
   border-radius: 2px;
   color: @green;
   font-size: 15px;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 #network.disconnected {
@@ -151,6 +176,7 @@ tooltip label {
   background: @module-bg;
   border-radius: 2px;
   font-size: 15px;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 #pulseaudio.muted {
@@ -164,6 +190,7 @@ tooltip label {
   border-radius: 2px;
   min-width: 28px;
   font-size: 15px;
+  transition: background 0.2s ease;
 }
 
 #backlight {
@@ -172,6 +199,7 @@ tooltip label {
   background: @module-bg;
   border-radius: 2px;
   font-size: 15px;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 #idle_inhibitor {
@@ -182,6 +210,7 @@ tooltip label {
   background: @module-bg;
   border-radius: 2px;
   min-width: 28px;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 #idle_inhibitor.activated {
@@ -193,6 +222,7 @@ tooltip label {
   padding: 0 10px;
   background: @module-bg;
   border-radius: 2px;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 #battery.charging, #battery.plugged {
@@ -222,6 +252,7 @@ tooltip label {
   background: @module-bg;
   border-radius: 2px;
   font-size: 15px;
+  transition: background 0.2s ease;
 }
 
 #tray menu {
@@ -239,4 +270,10 @@ tooltip label {
 #idle_inhibitor:hover,
 #workspaces button:hover {
   background: @module-hover;
+}
+
+#custom-notification, #clock, #hardware, #network, #pulseaudio,
+#custom-bluetooth, #backlight, #idle_inhibitor, #battery, #tray,
+#workspaces {
+  background-image: linear-gradient(135deg, alpha(@color4, 0.12), transparent);
 }
