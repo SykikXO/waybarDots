@@ -1,7 +1,7 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 28,
+  "height": 30,
   "reload_style_on_change": true,
   "modules-center": [
     "hyprland/workspaces"
@@ -14,13 +14,14 @@
   "modules-right": [
     "tray",
     "network",
+    "custom/bluetooth",
     "pulseaudio",
     "group/screen",
     "idle_inhibitor",
     "battery"
   ],
   "clock": {
-    "format": "{:%I:%M %p}",
+    "format": "{:%H:%M}",
     "format-alt": "{:%A, %B %d, %Y (%R)}",
     "tooltip-format": "<tt><span face='Input Mono Condensed Medium' size='small'>{calendar}</span></tt>",
     "calendar": {
@@ -44,16 +45,16 @@
   },
   "custom/notification": {
     "tooltip": false,
-    "format": " ",
+    "format": "&#xe7f4;",
     "on-click": "swaync-client -t -sw",
     "escape": true
   },
   "hyprland/workspaces": {
     "format": "{icon}",
     "format-icons": {
-      "empty": " ",
-      "active": " ",
-      "default": " "
+      "empty": "&#xe836;",
+      "active": "&#xe837;",
+      "default": "&#xe836;"
     },
     "persistent-workspaces": {
       "*": [
@@ -66,18 +67,18 @@
     }
   },
   "cpu": {
-    "format": "&#62171; {usage}%",
+    "format": "<span font_family='Material Symbols Outlined' fallback='false' size='large' rise='-3840'>&#xe30d;</span> {usage}%",
     "tooltip": false
   },
   "memory": {
-    "format": " {}%"
+    "format": "<span font_family='Material Symbols Outlined' fallback='false' size='large' rise='-3840'>&#xe322;</span> {}%"
   },
   "temperature": {
-    "format": "{icon}{temperatureC}°C",
+    "format": "<span font_family='Material Symbols Outlined' fallback='false' size='large' rise='-3840'>{icon}</span> {temperatureC}°C",
     "format-icons": [
-      "🌡 ",
-      "🌡 ",
-      "🌡 "
+      "&#xe1ff;",
+      "&#xe1ff;",
+      "&#xe1ff;"
     ],
     "critical-threshold": 60,
     "tooltip": false,
@@ -98,60 +99,61 @@
     ]
   },
   "network": {
-    "format": "({signalStrength}%  ) {essid}",
-    "format-disconnected": "⚠ Disconnected",
-    "format-linked": "{ifname} (No IP)  ",
-    "format-ethernet": "{ipaddr}/{cidr}  ",
+    "format": "<span font_family='Material Symbols Outlined' fallback='false' size='large' rise='-3840'>&#xe63e;</span> {essid}",
+    "format-disconnected": "<span font_family='Material Symbols Outlined' fallback='false' size='large' rise='-3840'>&#xe202;</span> Disconnected",
+    "format-linked": "{ifname} <span font_family='Material Symbols Outlined' fallback='false' size='large' rise='-3840'>&#xe202;</span>",
+    "format-ethernet": "{ipaddr}/{cidr} <span font_family='Material Symbols Outlined' fallback='false' size='large' rise='-3840'>&#xe8be;</span>",
     "tooltip": false,
-    "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    "format-alt": "{signalStrength}% {ifname}: {ipaddr}/{cidr}"
   },
   "pulseaudio": {
     "scroll-step": 1,
-    "format": "{volume}% {icon}  {format_source}",
-    "format-bluetooth": "{volume}% {icon}  {format_source}",
-    "format-bluetooth-muted": "󰖁 {icon}  {format_source}",
-    "format-muted": "󰖁  {format_source}",
-    "format-source": "{volume}%  ",
-    "format-source-muted": " ",
+    "format": "{volume}% <span font_family='Material Symbols Outlined' fallback='false' size='large' rise='-3840'>{icon}</span>  {format_source}",
+    "format-bluetooth": "{volume}% <span font_family='Material Symbols Outlined' fallback='false' size='large' rise='-3840'>{icon}&#xe1a7;</span>  {format_source}",
+    "format-bluetooth-muted": "<span font_family='Material Symbols Outlined' fallback='false' size='large' rise='-3840'>&#xe04f; {icon}&#xe1a7;</span>  {format_source}",
+    "format-muted": "<span font_family='Material Symbols Outlined' fallback='false' size='large' rise='-4300'>&#xe04f;</span>  {format_source}",
+    "format-source": "{volume}% <span font_family='Material Symbols Outlined' fallback='false' size='large' rise='-3840'>&#xe029;</span> ",
+    "format-source-muted": "<span font_family='Material Symbols Outlined' fallback='false' size='large' rise='-4300'>&#xe02b;</span> ",
     "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": " ",
-      "portable": " ",
-      "car": " ",
+      "headphone": "&#xe314;",
+      "hands-free": "&#xe314;",
+      "headset": "&#xe314;",
+      "phone": "&#xe0cd; ",
+      "portable": "&#xe0cd; ",
+      "car": "&#xe531; ",
       "default": [
-        "󰕿",
-        "󰖀",
-        "󰕾"
+      "&#xe04d;",
+      "&#xe79c;",
+      "&#xe050;"
       ]
     },
     "on-click": "pwvucontrol"
   },
+  "custom/bluetooth": {
+    "exec": "/home/sykik/.config/scripts/bt_status.sh",
+    "interval": 5,
+    "tooltip": false,
+    "format": "{}"
+  },
   "backlight": {
-    "format": "{icon} {percent}%",
+    "format": "<span font_family='Material Symbols Outlined' fallback='false' size='large' rise='-3840'>{icon}</span>",
     "format-icons": [
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
-      " ",
-      " "
+      "&#xe1c6;",
+      "&#xf157;",
+      "&#xe430;",
+      "&#xe81a;",
+      "&#xe518;"
     ],
     "on-scroll-up": "brillo -A 1",
     "tooltip": false,
     "on-scroll-down": "brillo -U 1",
-    "min-length": 4,
     "on-click": "exec /home/sykik/.config/scripts/hyprsunset_toggle.sh"
   },
   "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
-      "activated": "",
-      "deactivated": ""
+      "activated": "&#xe8f4;",
+      "deactivated": "&#xe8f5;"
     }
   },
   "battery": {
@@ -160,17 +162,18 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "{capacity}% {icon}",
-    "format-full": "{capacity}% {icon}",
-    "format-charging": "{capacity}% ",
-    "format-plugged": "{capacity}%  ",
-    "format-alt": "{time} {icon}",
+    "format": "{capacity}% <span font_family='Material Symbols Outlined' fallback='false' size='large' rise='-3840'>{icon}</span>",
+    "format-full": "{capacity}% <span font_family='Material Symbols Outlined' fallback='false' size='large' rise='-3840'>{icon}</span>",
+    "format-charging": "{capacity}% <span font_family='Material Symbols Outlined' fallback='false' size='large' rise='-3840'>&#xe1a3;</span>",
+    "format-plugged": "{capacity}% <span font_family='Material Symbols Outlined' fallback='false' size='large' rise='-3840'>&#xe63c;</span> ",
+    "format-alt": "{time} <span font_family='Material Symbols Outlined' fallback='false' size='large' rise='-3840'>{icon}</span>",
     "format-icons": [
-      " ",
-      " ",
-      " ",
-      " ",
-      " "
+      "&#xf09c;",
+      "&#xf09d;",
+      "&#xf09e;",
+      "&#xf09f;",
+      "&#xf0a0;",
+      "&#xf0a1;"
     ]
   }
 }
