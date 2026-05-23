@@ -1,177 +1,242 @@
 @import url('../../.cache/wal/colors-waybar.css');
-@define-color text #ffffff;
-@define-color green rgba(10, 240, 40, 0.5);
-@define-color red rgba(220, 20, 60, 0.5);
+
+@define-color module-bg alpha(#000000, 0.5);
+@define-color module-hover alpha(#282828, 0.9);
+@define-color accent @color4;
+@define-color green #6ebf8a;
+@define-color red #c75d68;
+@define-color yellow @color3;
 
 * {
-  font-family: "Input Mono Condensed";
   font-size: 18px;
-  color: @text ;
-  border-radius: 4px;
-  margin: 2px 0px;
+  min-height: 0;
+  border-radius: 0;
+  transition: background 0.15s ease, color 0.15s ease;
 }
-
 
 window#waybar {
-  background-color: alpha(@background, 0.0);
-  color: @text;
-  transition-property: background-color;
-  transition-duration: .5s;
-}
-
-window#waybar.hidden {
-  opacity: 0;
-}
-
-window#waybar.empty {
-  background-color: transparent;
-}
-
-
-.modules-left,
-.modules-right,
-.modules-center {}
-
-.modules-right,
-.modules-left {
+  font-family: "Iosevka Nerd Font Mono";
   background: transparent;
+  color: @foreground;
 }
 
-.modules-center {
-  margin: 0px;
-  padding: 0px;
-  background: transparent;
+window#waybar.hidden { opacity: 0; }
+window#waybar.empty { background: transparent; }
+
+tooltip {
+  background: alpha(@background, 0.95);
+  border: 1px solid alpha(@color8, 0.4);
+  border-radius: 2px;
 }
 
-#custom-notification {
-  margin: 0px 5px 0px 10px;
-  padding: 0px 5px 0px 9px;
-  border-bottom: 1px solid alpha(@color7, 1);
-  background: alpha(@color7, 0.5);
+tooltip label {
+  color: @foreground;
+  font-family: "Iosevka Nerd Font Mono";
+  font-size: 14px;
 }
 
-#clock {
-  background: alpha(@color9, 0.8);
-  padding: 0px 10px;
-  margin: 0px 5px;
-  border-bottom: 1px solid alpha(@color6, 1);
-}
+.modules-left { margin: 0 0 0 4px; }
+.modules-right { margin: 0 4px 0 0; }
+.modules-center { background: transparent; margin: 0; }
 
-#battery {
-  padding: 0px 10px;
-  margin: 0px 10px 0px 5px;
-  border-bottom: 1px solid alpha(@color6, 1);
-  background-color: alpha(@color9, 1);
+#workspaces {
+  background: alpha(#000000, 0.5);
+  border-radius: 2px;
+  padding: 0 4px;
+  margin: 4px 0;
 }
-
-#battery.charging,
-#battery.plugged {
-  background-color: @green;
-  border-bottom: 1px solid @green;
-}
-
-@keyframes blink {
-  to {
-    background-color: @red;
-  }
-}
-
-#battery.critical:not(.charging) {
-  background-color: @color3;
-  animation-name: blink;
-  animation-duration: 0.3s;
-  animation-timing-function: steps(12);
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
-
 
 #workspaces button {
-  border-radius: 8px;
-  background: alpha(@color2, 0.2);
-  padding: 0px 7px 0px 9px;
-  margin: 0px 2px;
-  opacity: 0.9;
+  font-family: "Material Symbols Outlined";
+  font-size: 26px;
+  background: transparent;
+  color: alpha(#ffffff, 0.8);
+  text-shadow: 0 0 8px alpha(@color4, 0.5);
+  border-radius: 2px;
+  padding: 2px 6px;
+  margin: 0;
+  min-width: 36px;
 }
 
 #workspaces button.active {
-  opacity: 1;
-  background: alpha(@color2, 0.4);
+  background: transparent;
+  color: #ffffff;
+  text-shadow: 0 0 12px @color4, 0 0 24px alpha(@color4, 0.7);
 }
 
 #workspaces button.empty {
-  background-color: alpha(@background, 0.1);
-  opacity: 0.8;
+  color: alpha(#ffffff, 0.4);
+  text-shadow: none;
 }
 
 #workspaces button.urgent {
-  background-color: red;
+  background: transparent;
+  color: @red;
+  text-shadow: 0 0 12px @red, 0 0 24px alpha(@red, 0.6);
+  animation: pulse 0.8s ease infinite alternate;
 }
 
 #workspaces button:hover {
-  background: alpha(@color7, 0.1);
-}
-
-
-#cpu,
-#memory,
-#temperature {
-  padding: 0px 10px;
-  border-radius: 0px;
   background: transparent;
+  text-shadow: 0 0 12px @color4, 0 0 24px alpha(@color4, 0.6);
+  color: @color4;
 }
 
-#temperature.critical {
-  box-shadow: 2px 0px 2px red;
+#custom-notification {
+  margin: 4px 0 4px 8px;
+  padding: 0 8px;
+  background: @module-bg;
+  border-radius: 2px;
+  font-family: "Material Symbols Outlined";
+  font-size: 19px;
+  min-width: 28px;
+}
+
+#clock {
+  margin: 4px 4px;
+  padding: 0 12px;
+  background: @module-bg;
+  border-radius: 2px;
+  color: @foreground;
+  font-weight: 600;
+  font-size: 20px;
 }
 
 #hardware {
-  padding: 0px 10px;
-  border-radius: 5px;
-  margin: 0 5px;
-  border-bottom: 1px dotted alpha(@color7, 1);
-  background: alpha(@color2, 0.7);
+  margin: 4px 4px;
+  padding: 0 2px;
+  background: @module-bg;
+  border-radius: 2px;
+}
+
+#hardware #cpu,
+#hardware #memory,
+#hardware #temperature {
+  padding: 0 7px;
+  background: transparent;
+  font-size: 15px;
+}
+
+#hardware #cpu { color: @foreground; }
+#hardware #memory { color: @foreground; }
+#hardware #temperature { color: @foreground; }
+
+#temperature.critical, #hardware #temperature.critical {
+  color: @red;
 }
 
 #network {
-  padding: 0px 10px;
-  margin: 0px 5px;
-  background: alpha(@color2, 0.7);
-  border-bottom: 1px dashed alpha(@color7, 1);
+  margin: 4px 4px;
+  padding: 0 10px;
+  background: @module-bg;
+  border-radius: 2px;
+  color: @green;
+  font-size: 15px;
 }
 
-#pulseaudio,
-#backlight,
-#idle_inhibitor {
-  padding: 0px 10px;
-  margin: 0px 5px;
-  border-bottom: 1px dashed alpha(@color10, 1);
-  background: alpha(@color2, 0.7);
+#network.disconnected {
+  background: alpha(#111111, 0.95);
+  color: @red;
+  font-size: 15px;
 }
 
-
-#image.eyecare {
-  background-color: alpha(@color5, 0.8);
-  padding: 6px;
-  border-radius: 15%;
-  margin: 0 3px;
+#network.linked {
+  color: @color8;
+  font-size: 15px;
 }
 
+#pulseaudio {
+  margin: 4px 4px;
+  padding: 0 10px;
+  background: @module-bg;
+  border-radius: 2px;
+  font-size: 15px;
+}
 
 #pulseaudio.muted {
-  border-bottom: 2px solid red;
-  background: alpha(@color3, 0.2);
+  color: @red;
 }
 
-#clock:hover,
-#custom-pacman:hover,
+#custom-bluetooth {
+  margin: 4px 4px;
+  padding: 0 8px;
+  background: @module-bg;
+  border-radius: 2px;
+  min-width: 28px;
+  font-size: 15px;
+}
+
+#backlight {
+  margin: 4px 4px;
+  padding: 0 10px;
+  background: @module-bg;
+  border-radius: 2px;
+  font-size: 15px;
+}
+
+#idle_inhibitor {
+  font-family: "Material Symbols Outlined";
+  font-size: 19px;
+  margin: 4px 4px;
+  padding: 0 8px;
+  background: @module-bg;
+  border-radius: 2px;
+  min-width: 28px;
+}
+
+#idle_inhibitor.activated {
+  color: @color4;
+}
+
+#battery {
+  margin: 4px 4px;
+  padding: 0 10px;
+  background: @module-bg;
+  border-radius: 2px;
+}
+
+#battery.charging, #battery.plugged {
+  color: @green;
+}
+
+#battery.critical:not(.charging) {
+  background: alpha(@red, 0.25);
+  color: @red;
+  animation: blink 0.5s ease infinite alternate;
+}
+
+@keyframes blink {
+  from { background-color: alpha(@red, 0.3); }
+  to { background-color: alpha(@red, 0.5); }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+#tray {
+  margin: 4px 4px;
+  padding: 0 8px;
+  background: @module-bg;
+  border-radius: 2px;
+  font-size: 15px;
+}
+
+#tray menu {
+  background: @background;
+  color: @foreground;
+}
+
 #custom-notification:hover,
-#bluetooth:hover,
-#network:hover,
+#custom-bluetooth:hover,
+#clock:hover,
 #battery:hover,
-#cpu:hover,
-#memory:hover,
-#temperature:hover {
-  transition: all .3s ease;
-  color: @color15;
+#network:hover,
+#pulseaudio:hover,
+#backlight:hover,
+#idle_inhibitor:hover,
+#workspaces button:hover {
+  background: @module-hover;
 }
